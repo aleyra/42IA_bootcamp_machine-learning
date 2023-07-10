@@ -13,10 +13,19 @@ def add_intercept(x):
 	"""
 	if not isinstance(x, np.ndarray) or x.size == 0:
 		return None
+	if (x.ndim == 1):
+		res = []
+		nb_line = x.shape[0]
+		for i in range(nb_line):
+			res.append(1)
+			res.append(x[i])
+		res = np.array(res)
+		res = res.reshape(nb_line, 2)
+		return res
+	
 	col1 = list()
 	for i in range(x.shape[0]):
 		col1.append(1)
-
 	res = np.insert(x, 0, col1, axis = 1)
 	return res
 
