@@ -18,3 +18,6 @@ liens utiles
 * make sklearn.metrics work : https://scikit-learn.org/stable/install.html
 -> `conda install scikit-learn`
 
+## exercice 07
+liens utiles
+* multi constructor : https://realpython.com/python-multiple-constructors/#instantiating-classes-in-python
