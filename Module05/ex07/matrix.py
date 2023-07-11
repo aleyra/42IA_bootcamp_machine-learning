@@ -126,6 +126,11 @@ class Matrix:
                     for k in range(self.shape[1]):
                         res.data[i][j] += self.data[i][k] * l.data[k][j]
             return res
+        else:
+            raise TypeError("""Multiplication is possible between :
+        - matrix and scalar
+        - matrix and vector
+        - matrix and matrix""")
         
     def __rmul__(self, r):
         if (isinstance(r, int) or isinstance(r, float)):
@@ -145,6 +150,11 @@ class Matrix:
                     for k in range(r.shape[1]):
                         res.data[i][j] += r.data[i][k] * self.data[k][j]
             return res
+        else:
+            raise TypeError("""Multiplication is possible between :
+        - scalar and matrix
+        - vector and matrix
+        - matrix and matrix""")
 
     def __str__(self) -> str:
         to_print = f"shape = {self.shape}\n["
