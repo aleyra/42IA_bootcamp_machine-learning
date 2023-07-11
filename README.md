@@ -11,3 +11,4 @@ liens utiles
 ## exercice 02
 liens utiles
 * multi mat : https://numpy.org/doc/stable/reference/generated/numpy.matmul.html
+
