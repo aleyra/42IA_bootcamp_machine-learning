@@ -12,3 +12,9 @@ liens utiles
 liens utiles
 * multi mat : https://numpy.org/doc/stable/reference/generated/numpy.matmul.html
 
+## exercice 05
+liens utiles
+* abs() : https://www.w3schools.com/python/python_math.asp
+* make sklearn.metrics work : https://scikit-learn.org/stable/install.html
+-> `conda install scikit-learn`
+
