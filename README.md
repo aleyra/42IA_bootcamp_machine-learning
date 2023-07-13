@@ -25,4 +25,7 @@ liens utiles
 * repr : https://www.w3resource.com/python/built-in-function/repr.php
 
 # Module 06
-## exercice 0
+## exercice 00
+liens utiles
+* np.transpose : https://numpy.org/doc/stable/reference/generated/numpy.transpose.html
+* multiply 2 matrices : https://numpy.org/doc/stable/reference/generated/numpy.matmul.html
