@@ -29,3 +29,7 @@ liens utiles
 liens utiles
 * np.transpose : https://numpy.org/doc/stable/reference/generated/numpy.transpose.html
 * multiply 2 matrices : https://numpy.org/doc/stable/reference/generated/numpy.matmul.html
+
+## exercice 01
+liens utiles
+* 
