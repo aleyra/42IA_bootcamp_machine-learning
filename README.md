@@ -21,3 +21,5 @@ liens utiles
 ## exercice 07
 liens utiles
 * multi constructor : https://realpython.com/python-multiple-constructors/#instantiating-classes-in-python
+* heritage : https://www.pierre-giraud.com/python-apprendre-programmer-cours/oriente-objet-heritage-polymorphisme/
+* repr : https://www.w3resource.com/python/built-in-function/repr.php
