@@ -2,7 +2,7 @@ import numpy as np
 
 
 def loss_(y, y_hat):
-    """Computes the half mean squared error of two non-empty numpy.array, 
+    """Computes the half mean squared error of two non-empty numpy.array,
     without any for loop.
     The two arrays must have the same dimensions.
     Args:
@@ -15,18 +15,19 @@ def loss_(y, y_hat):
     Raises:
             his function should not raise any Exceptions.
     """
-    if (not isinstance(y, np.ndarray) or not isinstance(y_hat, np.ndarray)):
+    if not isinstance(y, np.ndarray) or not isinstance(y_hat, np.ndarray):
         return None
-    if (y.size == 0 or y_hat.size == 0):
+    if y.size == 0 or y_hat.size == 0:
         return None
-    if (y.ndim != y_hat.ndim):
+    if y.ndim != y_hat.ndim:
         return None
-    res = 0.
-#     print(y[1])
+    res = 0.0
+    #     print(y[1])
     for i in range(y.shape[0]):
         res += (y_hat[i][0] - y[i][0]) * (y_hat[i][0] - y[i][0])
-    res /= (2 * y.shape[0])
+    res /= 2 * y.shape[0]
     return res
+
 
 if __name__ == "__main__":
     X = np.array([[0], [15], [-9], [7], [12], [3], [-21]])
@@ -36,7 +37,7 @@ if __name__ == "__main__":
     print(loss_(X, Y))
     # Output:
     # 2.142857142857143
-    
+
     # Example 2:
     print(loss_(X, X))
     # Output:

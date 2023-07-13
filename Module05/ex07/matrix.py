@@ -178,6 +178,7 @@ class Matrix:
             for j in range(res.shape[1]):
                 res.data[i][j] = self.data[j][i]
         return res
+
     
 class Vector(Matrix):
     def __init__(self, obj) -> None:

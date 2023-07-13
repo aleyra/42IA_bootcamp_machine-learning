@@ -1,23 +1,26 @@
 import numpy as np
 
+
 def plot_with_loss(x, y, theta):
     """Plot the data and prediction line from three non-empty numpy.ndarray.
-        Args:
-                x: has to be an numpy.ndarray, a vector of dimension m * 1.
-                y: has to be an numpy.ndarray, a vector of dimension m * 1.
-                theta: has to be an numpy.ndarray, a vector of dimension 2 * 1.
-        Returns:
-                Nothing.
-        Raises:
-                This function should not raise any Exception.
+    Args:
+            x: has to be an numpy.ndarray, a vector of dimension m * 1.
+            y: has to be an numpy.ndarray, a vector of dimension m * 1.
+            theta: has to be an numpy.ndarray, a vector of dimension 2 * 1.
+    Returns:
+            Nothing.
+    Raises:
+            This function should not raise any Exception.
     """
 
+
 if __name__ == "__main__":
-    x = np.arange(1,6)
-    y = np.array([11.52434424, 10.62589482, 13.14755699, 18.60682298, 14.14329568])
+    x = np.arange(1, 6)
+    y = np.array(
+        [11.52434424, 10.62589482, 13.14755699, 18.60682298, 14.14329568])
 
     # Example 1:
-    theta1= np.array([18,-1])
+    theta1 = np.array([18, -1])
     plot_with_loss(x, y, theta1)
 
     # Example 2:
