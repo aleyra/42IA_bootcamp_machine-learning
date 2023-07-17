@@ -58,13 +58,36 @@ def simple_gradient(x, y, theta):
         return None
     if x.shape != y.shape or x.shape[1] != 1 or theta.shape != (2, 1):
         return None
-    # print(x.shape)
     x_prime = add_intercept(x)
     x_primet_over_m = 1 / x.shape[0] * np.transpose(x_prime)
     prodmat = np.matmul(x_prime, theta)
     t = prodmat - y
     gradient = np.matmul(x_primet_over_m, t)
     return gradient
+
+
+def predict_(x, theta):
+    """Computes the vector of prediction y_hat from two non-empty numpy.array.
+        Args:
+            x: has to be an numpy.array, a vector of dimension m * 1.
+            theta: has to be an numpy.array, a vector of dimension 2 * 1.
+        Returns:
+            y_hat as a numpy.array, a vector of dimension m * 1.
+            None if x and/or theta are not numpy.array.
+            None if x or theta are empty numpy.array.
+            None if x or theta dimensions are not appropriate.
+        Raises:
+            function should not raise any Exceptions.
+    """
+    if (not isinstance(x, np.ndarray) or not isinstance(theta, np.ndarray)):
+        return None
+    if (x.size == 0 or theta.size == 0):
+        return None
+    if (x.ndim != 2 or x.shape[1] != 1 or theta.shape != (2, 1)):
+        return None
+    x = add_intercept(x)
+    y_hat = np.matmul(x, theta)
+    return y_hat
 
 
 def fit_(x, y, theta, alpha, max_iter):
@@ -109,12 +132,12 @@ def fit_(x, y, theta, alpha, max_iter):
     return new_theta
     
 
-
 if __name__ == "__main__":
     lstx = [
         [12.4956442], [21.5007972], [31.5527382], [48.9145838], [57.5088733]
     ]
     x = np.array(lstx)
+
     lsty = [
         [37.4013816],[36.1473236], [45.7655287], [46.6793434], [59.5585554]
     ]
@@ -123,13 +146,12 @@ if __name__ == "__main__":
     
     # Example 0:
     theta1 = fit_(x, y, theta, alpha=5e-8, max_iter=1500000)
-    print(theta1)
     # Output:
     # array([[1.40709365],
     #         [1.1150909 ]])
     
     # Example 1:
-    # predict(x, theta1)  # ??????
+    print(predict_(x, theta1))  # function from Module05 ex02 almost -_-
     # Output:
     # array([[15.3408728 ],
     #         [25.38243697],
