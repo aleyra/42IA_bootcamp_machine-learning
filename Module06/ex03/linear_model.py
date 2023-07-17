@@ -4,9 +4,10 @@ from sklearn.metrics import mean_squared_error
 from my_linear_regression import MyLinearRegression as MyLR
 
 
-data = pd.read_csv("are_blue_pills_magic.csv")
-Xpill = np.array(data[Micrograms]).reshape(-1,1)
-Yscore = np.array(data[Score]).reshape(-1,1)
+data = pd.read_csv("are_blue_pills_magics.csv")
+# print(data)
+Xpill = np.array(data['Micrograms']).reshape(-1,1)
+Yscore = np.array(data['Score']).reshape(-1,1)
 linear_model1 = MyLR(np.array([[89.0], [-8]]))
 linear_model2 = MyLR(np.array([[89.0], [-6]]))
 Y_model1 = linear_model1.predict_(Xpill)
