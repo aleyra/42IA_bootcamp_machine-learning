@@ -102,6 +102,11 @@ def fit_(x, y, theta, alpha, max_iter):
         return None
     if x.shape != y.shape or x.shape[1] != 1 or theta.shape != (2, 1):
         return None
+
+    new_theta = theta
+    for i in range(max_iter):
+        new_theta = new_theta - alpha * simple_gradient(x, y, new_theta)
+    return new_theta
     
 
 
@@ -118,7 +123,7 @@ if __name__ == "__main__":
     
     # Example 0:
     theta1 = fit_(x, y, theta, alpha=5e-8, max_iter=1500000)
-    theta1
+    print(theta1)
     # Output:
     # array([[1.40709365],
     #         [1.1150909 ]])
