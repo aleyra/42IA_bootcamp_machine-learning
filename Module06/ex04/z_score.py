@@ -20,7 +20,13 @@ def zscore(x):
     
     tstat = TinyStatistician()
     mean = tstat.mean(x)
-    std = tstat.std(x)
+
+    std = 0.0
+    for i in range(x.shape[0]):
+        std += (x[i] - mean) * (x[i] - mean)
+    std = std / x.shape[0]
+    std = math.sqrt(std)  #french version of std -> same result but different formula
+    # std = tstat.std(x)  #english version of std -> different result but same formula
     x_prime = np.ndarray(x.shape)
     for i in range(x.shape[0]):
         x_prime[i] = (x[i] - mean) / std
