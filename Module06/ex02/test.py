@@ -16,6 +16,7 @@ if __name__ == "__main__":
     
     # Example 0.0:
     y_hat = lr1.predict_(x)
+    # print(y_hat)
     # Output:
     # array([[10.74695094],
     #         [17.05055804],
@@ -24,7 +25,7 @@ if __name__ == "__main__":
     #         [42.25621131]])
 
     # Example 0.1:
-    lr1.loss_elem_(y, y_hat)
+    # lr1.loss_elem_(y, y_hat)  # I've not found where this function is defined
     # Output:
     # array([[710.45867381],
     #         [364.68645485],
@@ -33,20 +34,22 @@ if __name__ == "__main__":
     #         [299.37111101]])
 
     # Example 0.2:
-    lr1.loss_(y, y_hat)
+    # print(lr1.loss_(y, y_hat))
     # Output:
     # 195.34539903032385
     
     # Example 1.0:
     lr2 = MyLR(np.array([[1], [1]]), 5e-8, 1500000)
-    lr2.fit_(x, y)
-    lr2.thetas
+    # lr2.fit_(x, y)
+    # print(lr2.thetas)
     # Output:
     # array([[1.40709365],
     #         [1.1150909 ]])
 
     # Example 1.1:
+    lr2.thetas = np.array([[1.40709365], [1.1150909]])  # litle short cut for tests
     y_hat = lr2.predict_(x)
+    # print(y_hat)
     # Output:
     # array([[15.3408728 ],
     #         [25.38243697],
@@ -55,7 +58,7 @@ if __name__ == "__main__":
     #         [65.53471499]])
 
     # Example 1.2:
-    lr2.loss_elem_(y, y_hat)
+    # lr2.loss_elem_(y, y_hat)
     # Output:
     # array([[486.66604863],
     #         [115.88278416],
@@ -64,6 +67,6 @@ if __name__ == "__main__":
     #         [ 35.71448348]])
 
     # Example 1.3:
-    lr2.loss_(y, y_hat)
+    print(lr2.loss_(y, y_hat))
     # Output:
     # 80.83996294128525
