@@ -30,6 +30,6 @@ liens utiles
 * np.transpose : https://numpy.org/doc/stable/reference/generated/numpy.transpose.html
 * multiply 2 matrices : https://numpy.org/doc/stable/reference/generated/numpy.matmul.html
 
-## exercice 01
+## exercice 05
 liens utiles
-* 
+* np.min : https://numpy.org/doc/stable/reference/generated/numpy.ndarray.min.html
