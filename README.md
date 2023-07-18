@@ -35,4 +35,9 @@ liens utiles
 * np.min : https://numpy.org/doc/stable/reference/generated/numpy.ndarray.min.html
 
 # Module 07
-## exercice 0
+## exercice 02
+pb dans les theta donnés, ils ne sont pas de la bonne dimension.
+donc tests impossible a effectuer...
+enfin faudrait retrouver la 4e coord de theta. Faisable mais long.
+pour theta2 c'est (0, 0, 0, 0)
+
