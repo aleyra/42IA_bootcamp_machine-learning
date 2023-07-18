@@ -22,7 +22,7 @@ def loss_(y, y_hat):
         return None
     if y.shape != y_hat.shape:
         return None
-    diff = np.subtract(y_hat, y)
+    diff = y_hat - y
     res = 0.0
     for i in range(diff.shape[0]):
         res += diff[i][0] * diff[i][0]
