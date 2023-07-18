@@ -1,4 +1,6 @@
 import numpy as np
+from gradient import add_intercept, gradient
+from prediction import predict_
 
 def fit_(x, y, theta, alpha, max_iter):
     """
@@ -21,7 +23,26 @@ def fit_(x, y, theta, alpha, max_iter):
     Raises:
             This function should not raise any Exception.
     """
-    return None
+    if (
+        not isinstance(x, np.ndarray)
+        or not isinstance(y, np.ndarray)
+        or not isinstance(theta, np.ndarray)
+        or not isinstance(alpha, float)
+        or not isinstance(max_iter, int)
+    ):
+        return None
+    if x.ndim != 2 or y.ndim != 2 or theta.ndim != 2:
+        return None
+    if alpha > 1 or alpha < 0 or max_iter < 1:
+        return None
+    if x.size == 0 or y.size == 0 or theta.size == 0:
+        return None
+    if x.shape[0] != y.shape[0] or x.shape[1] + 1 != theta.shape[0]:
+        return None
+    
+    for i in range(max_iter):
+        theta = theta - alpha * gradient(x, y, theta)
+    return theta
 
 
 if __name__ == "__main__":
