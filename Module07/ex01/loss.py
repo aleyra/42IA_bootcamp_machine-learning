@@ -16,7 +16,18 @@ def loss_(y, y_hat):
     Raises:
             This function should not raise any Exception.
     """
-    return None
+    if not isinstance(y, np.ndarray) or not isinstance(y_hat, np.ndarray):
+        return None
+    if y.size == 0 or y_hat.size == 0:
+        return None
+    if y.shape != y_hat.shape:
+        return None
+    diff = np.subtract(y_hat, y)
+    res = 0.0
+    for i in range(diff.shape[0]):
+        res += diff[i][0] * diff[i][0]
+    res /= 2 * diff.shape[0]
+    return res
 
 
 if __name__ == "__main__":
