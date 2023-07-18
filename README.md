@@ -35,3 +35,4 @@ liens utiles
 * np.min : https://numpy.org/doc/stable/reference/generated/numpy.ndarray.min.html
 
 # Module 07
+## exercice 0
