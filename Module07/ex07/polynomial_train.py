@@ -43,3 +43,5 @@ if __name__ == "__main__":
     theta6 = np.array(
         [[9110],[ -18015],[ 13400],[ -4935],[ 966],[ -96.4],[ 3.86]]
     ).reshape(-1,1)
+
+    # use "../data/are_blue_pills_magics.csv"

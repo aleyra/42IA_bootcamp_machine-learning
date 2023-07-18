@@ -4,7 +4,7 @@ from mylinearregression import MyLinearRegression as MyLR
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("spacecraft_data.csv")
+    data = pd.read_csv("../data/spacecraft_data.csv")
     X = np.array(data[['Age', 'Thrust_power', 'Terameters']])
     Y = np.array(data[['Sell_price']])
     my_lreg = MyLR(
