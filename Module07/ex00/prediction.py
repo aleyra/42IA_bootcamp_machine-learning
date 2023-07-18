@@ -1,19 +1,20 @@
 import numpy as np
 
+
 def add_intercept(x):
     """Adds a column of 1's to the non-empty numpy.array x.
-        Args:
-            to be a numpy.array of dimension m * n.
-        Returns:
-            X, a numpy.array of dimension m * (n + 1).
-            None if x is not a numpy.array.
-            None if x is an empty numpy.array.
-        Raises:
-            function should not raise any Exception.
+    Args:
+        to be a numpy.array of dimension m * n.
+    Returns:
+        X, a numpy.array of dimension m * (n + 1).
+        None if x is not a numpy.array.
+        None if x is an empty numpy.array.
+    Raises:
+        function should not raise any Exception.
     """
     if not isinstance(x, np.ndarray) or x.size == 0:
         return None
-    if (x.ndim == 1):
+    if x.ndim == 1:
         res = []
         nb_line = x.shape[0]
         for i in range(nb_line):
@@ -22,11 +23,11 @@ def add_intercept(x):
         res = np.array(res)
         res = res.reshape(nb_line, 2)
         return res
-    
+
     col1 = list()
     for i in range(x.shape[0]):
         col1.append(1)
-    res = np.insert(x, 0, col1, axis = 1)
+    res = np.insert(x, 0, col1, axis=1)
     return res
 
 
@@ -43,11 +44,11 @@ def predict_(x, theta):
     Raises:
             This function should not raise any Exception.
     """
-    if (not isinstance(x, np.ndarray) or not isinstance(theta, np.ndarray)):
+    if not isinstance(x, np.ndarray) or not isinstance(theta, np.ndarray):
         return None
-    if (x.size == 0 or theta.size == 0):
+    if x.size == 0 or theta.size == 0:
         return None
-    if (theta.shape[1] != 1 or x.shape[1] + 1 != theta.shape[0]):
+    if theta.shape[1] != 1 or x.shape[1] + 1 != theta.shape[0]:
         return None
     y_hat = np.ndarray((x.shape[0], 1))
     x = add_intercept(x)
@@ -56,7 +57,7 @@ def predict_(x, theta):
 
 
 if __name__ == "__main__":
-    x = np.arange(1,13).reshape((4,-1))
+    x = np.arange(1, 13).reshape((4, -1))
 
     # Example 1:
     theta1 = np.array([5, 0, 0, 0]).reshape((-1, 1))
