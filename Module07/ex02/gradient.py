@@ -77,19 +77,19 @@ if __name__ == "__main__":
         [ 9, -11, 8]
     ])
     y = np.array([2, 14, -13, 5, 12, 4, -19]).reshape((-1, 1))
-    theta1 = np.array([3,0.5,-6]).reshape((-1, 1))
+    theta1 = np.array([3,0.5,-6,-11]).reshape((-1, 1))
 
     print(theta1)
 
     # Example 1:
-    # g = gradient(x, y, theta1)
-    # print(f"exemple 1\n{g}")
+    g = gradient(x, y, theta1)
+    print(f"exemple 1\n{g}")
     # Output:
     # array([[ -33.71428571], [ -37.35714286], [183.14285714], [-393.]])
 
     # Example 2:
-    theta2 = np.array([0,0,0, 0]).reshape((-1, 1))
-    g = gradient(x, y, theta2)
-    print(f"exemple 2\n{g}")
+    # theta2 = np.array([0,0,0, 0]).reshape((-1, 1))
+    # g = gradient(x, y, theta2)
+    # print(f"exemple 2\n{g}")
     # Output:
     # array([[ -0.71428571], [ 0.85714286], [23.28571429], [-26.42857143]])
