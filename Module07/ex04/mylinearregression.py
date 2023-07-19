@@ -134,13 +134,11 @@ class MyLinearRegression():
         Raises:
                 This function should not raise any Exception.
         """
-        print(type(self.theta))
         if (
             not isinstance(x, np.ndarray)
             or not isinstance(self.theta, np.ndarray)
         ):
             return None
-        print("bouh")
         if x.size == 0 or self.theta.size == 0:
             return None
         if self.theta.shape[1] != 1 or x.shape[1] + 1 != self.theta.shape[0]:
