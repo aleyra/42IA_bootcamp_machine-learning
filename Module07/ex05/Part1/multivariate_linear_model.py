@@ -4,7 +4,7 @@ from mylinearregression import MyLinearRegression as MyLR
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("../data/spacecraft_data.csv")
+    data = pd.read_csv("../../data/spacecraft_data.csv")
     X = np.array(data[['Age']])
     Y = np.array(data[['Sell_price']])
     myLR_age = MyLR(theta = [[1000.0], [-1.0]], alpha = 2.5e-5, max_iter = 100000)
