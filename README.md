@@ -42,3 +42,7 @@ enfin faudrait retrouver la 4e coord de theta. Faisable mais long.
 pour theta2 c'est (0, 0, 0, 0)
 pour theta1 ce serait (3, 0.5, -6, -3.059813084)... ouais y'a moyen que ce soit un truc du genre
 c'est tout theta1 qui va pas...
+
+
+## exercice 04
+attention, le résultat donné est en écriture scientifique... et pas l'output attendu...
