@@ -51,3 +51,11 @@ attention, le résultat donné est en écriture scientifique... et pas l'output 
 ### Part 2
 #### exemple 0
 il faut faire le mse entre y et y_hat, et non pas entre x et y... donc on doit d'abord obtenir y_hat avec predict
+pour i = 19025,
+theta = [
+        [3.90663578e+299]
+        [4.49758795e+300]
+        [4.53451611e+301]
+        [3.62457311e+301]]
+!!!
+tu m'étonnes que j'ai un overflow
