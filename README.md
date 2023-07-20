@@ -46,3 +46,8 @@ c'est tout theta1 qui va pas...
 
 ## exercice 04
 attention, le résultat donné est en écriture scientifique... et pas l'output attendu...
+
+## exercice 05
+### Part 2
+#### exemple 0
+il faut faire le mse entre y et y_hat, et non pas entre x et y... donc on doit d'abord obtenir y_hat avec predict
