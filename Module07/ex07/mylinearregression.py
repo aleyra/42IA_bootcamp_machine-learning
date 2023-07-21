@@ -80,11 +80,11 @@ class MyLinearRegression():
         prodmat = np.matmul(x_prime, self.theta)
         x_prime_T = np.array(x_prime_T, dtype = np.float64)
         prodmat = np.array(prodmat, dtype = np.float64)
-        # np.seterr(over='raise')
-        # try:
-        gradient = np.matmul(x_prime_T, prodmat - y) / x.shape[0]
-        # except:
-        #     print(f"x_prime_T = {self.theta}")
+        np.seterr(over='raise')
+        try:
+            gradient = np.matmul(x_prime_T, prodmat - y) / x.shape[0]
+        except:
+            print(f"x_prime_T = {self.theta}")
         return gradient
     
     def fit_(self, x, y):
@@ -128,8 +128,8 @@ class MyLinearRegression():
         # print("bouh")
         
         for i in range(self.max_iter):
-            self.theta = self.theta - self.alpha * self.gradient(x, y)
             # print(f"i = {i}")
+            self.theta = self.theta - self.alpha * self.gradient(x, y)
         return self.theta
 
     def predict_(self, x):
