@@ -5,7 +5,7 @@ from mylinearregression import MyLinearRegression as MyLR
 
 
 if __name__ == "__main__":
-    # begin???
+    # 1st part
     x = np.arange(1,11).reshape(-1,1)
     y = np.array([[ 1.39270298],
         [ 3.88237651],
@@ -18,24 +18,29 @@ if __name__ == "__main__":
         [10.37567392],
         [10.68238222]])
     
+    """
     plt.scatter(x,y)
     plt.show()
+    """
 
+    # 2nd part
     # Build the model:
     x_ = add_polynomial_features(x, 3)
-    my_lr = MyLR(np.ones(4).reshape(-1,1)).fit_(x_, y)
+    my_lr = MyLR(np.ones(4).reshape(-1,1))
+    my_lr.fit_(x_, y)
+   
 
     # Plot:
     ## To get a smooth curve, we need a lot of data points
-    continuous_x = np.arange(1,10.01, 0.01).reshape(-1,1)
-    x_ = add_polynomial_features(continuous_x, 3)
-    y_hat = my_lr.predict_(continuous_x)
+    # continuous_x = np.arange(1,10.01, 0.01).reshape(-1,1)
+    # x_ = add_polynomial_features(continuous_x, 3)
+    # y_hat = my_lr.predict_(continuous_x)
     
-    plt.scatter(x,y)
-    plt.plot(continuous_x, y_hat, color='orange')
-    plt.show()
-    # end???
-
+    # plt.scatter(x,y)
+    # plt.plot(continuous_x, y_hat, color='orange')
+    # plt.show()
+    
+    """
     # starting points ?
     theta4 = np.array([[-20],[ 160],[ -80],[ 10],[ -1]]).reshape(-1,1)
     theta5 = np.array(
@@ -45,3 +50,4 @@ if __name__ == "__main__":
     ).reshape(-1,1)
 
     # use "../data/are_blue_pills_magics.csv"
+    """
