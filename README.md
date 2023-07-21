@@ -49,7 +49,6 @@ attention, le résultat donné est en écriture scientifique... et pas l'output 
 
 ## exercice 05
 ### Part 2
-#### exemple 0
 il faut faire le mse entre y et y_hat, et non pas entre x et y... donc on doit d'abord obtenir y_hat avec predict
 pour i = 19025,
 theta = [
@@ -59,3 +58,9 @@ theta = [
         [3.62457311e+301]]
 !!!
 tu m'étonnes que j'ai un overflow
+
+## exercice 06
+liens utiles
+* for i in [a, b] : https://www.w3schools.com/python/python_for_loops.asp
+* add column : https://www.geeksforgeeks.org/python-ways-to-add-row-columns-in-numpy-array/
+* vector to power : https://numpy.org/doc/stable/reference/generated/numpy.power.html
