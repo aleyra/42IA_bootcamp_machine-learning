@@ -85,8 +85,8 @@ class MyLinearRegression():
             gradient = np.matmul(x_prime_T, y_hat - y) / x.shape[0]
         except:
             # print(f"x_prime_T = {x_prime_T}")
-            print(f"self.theta = {self.theta[1]}")
-            print(f"prodmat = {y_hat[1]}")
+            print(f"self.theta[1] = {self.theta[1]}")
+            print(f"y_hat[1] = {y_hat[1]}")
         return gradient
     
     def fit_(self, x, y):
@@ -127,11 +127,11 @@ class MyLinearRegression():
             return None
         if x.shape[0] != y.shape[0] or x.shape[1] + 1 != self.theta.shape[0]:
             return None
-        print("bouh")
+        # print("bouh")
         
         for i in range(self.max_iter):
             gradient = self.gradient(x, y)
-            if i % 100 == 0:
+            if i % 100 == 1:
                 print(f"i = {i} : gradient[1] = {gradient[1]} et theta[1] = {self.theta[1]}")
             self.theta = self.theta - self.alpha * gradient
             # if i == 19024 or i == 19022:  #
