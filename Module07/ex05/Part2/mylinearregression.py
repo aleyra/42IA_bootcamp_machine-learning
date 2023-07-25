@@ -85,7 +85,9 @@ class MyLinearRegression():
         try:
             gradient = np.matmul(x_prime_T, prodmat - y) / x.shape[0]
         except:
-            print(f"x_prime_T = {self.theta}")
+            print(f"x_prime_T = {x_prime_T}")
+            print(f"self.theta = {self.theta}")
+            print(f"prodmat = {prodmat}")
         return gradient
     
     def fit_(self, x, y):
@@ -130,9 +132,11 @@ class MyLinearRegression():
         
         for i in range(self.max_iter):
             print(f"i = {i}")
+            gradient = self.gradient(x, y)
+            self.theta = self.theta - self.alpha * gradient
             if i == 19024 or i == 19022:  #
-                print(f"gradient = {self.gradient(x,y)}")
-            self.theta = self.theta - self.alpha * self.gradient(x, y)
+                print(f"gradient = {gradient}")
+                print(f"theta = {self.theta}")
         return self.theta
 
     def predict_(self, x):
