@@ -130,6 +130,8 @@ class MyLinearRegression():
         
         for i in range(self.max_iter):
             print(f"i = {i}")
+            if i == 19024 or i == 19022:  #
+                print(f"gradient = {self.gradient(x,y)}")
             self.theta = self.theta - self.alpha * self.gradient(x, y)
         return self.theta
 
