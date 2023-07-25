@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import csv
 from polynomial_model import add_polynomial_features
 from mylinearregression import MyLinearRegression as MyLR
 
@@ -21,6 +22,18 @@ if __name__ == "__main__":
     # plt.scatter(x,y)
     # plt.show()
 
+    f_x = open('x.csv', 'w')
+    writer_x = csv.writer(f_x)
+    for i in range(x.shape[0]):
+        writer_x.writerow(x[i])
+    f_x.close()
+
+    f_y = open('y.csv', 'w')
+    writer_y = csv.writer(f_y)
+    for i in range(y.shape[0]):
+        writer_y.writerow(y[i])
+    f_y.close()
+
     # 2nd part
     # Build the model:
     x_ = add_polynomial_features(x, 3)
@@ -29,11 +42,27 @@ if __name__ == "__main__":
     my_lr.fit_(x_, y)
     # print(my_lr.theta)
 
+    
+
     # Plot:
     ## To get a smooth curve, we need a lot of data points
     continuous_x = np.arange(1,10.01, 0.01).reshape(-1,1)
     x_ = add_polynomial_features(continuous_x, 3)
-    y_hat = my_lr.predict_(continuous_x)
+    y_hat = my_lr.predict_(x_)
+    # print(type(y_hat))
+
+    f_x_ = open('x_.csv', 'w')
+    writer_x_ = csv.writer(f_x_)
+    for i in range(x_.shape[0]):
+        writer_x_.writerow(x_[i])
+    f_x_.close()
+
+    print(y_hat)
+    f_y_hat = open('y_hat.csv', 'w')
+    writer_y_hat = csv.writer(f_y_hat)
+    for i in range(y_hat.shape[0]):
+        writer_y_hat.writerow(y_hat[i])
+    f_y_hat.close()
     
     # plt.scatter(x,y)
     # plt.plot(continuous_x, y_hat, color='orange')
