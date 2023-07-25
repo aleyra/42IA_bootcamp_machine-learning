@@ -127,7 +127,6 @@ class MyLinearRegression():
             return None
         if x.shape[0] != y.shape[0] or x.shape[1] + 1 != self.theta.shape[0]:
             return None
-        # print("bouh")
         
         for i in range(self.max_iter):
             gradient = self.gradient(x, y)

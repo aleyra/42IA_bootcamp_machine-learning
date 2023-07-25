@@ -28,7 +28,8 @@ if __name__ == "__main__":
     # array([[334.994...],[-22.535...],[5.857...],[-2.586...]])
 
     # Example 2:
-    m = my_lreg.mse_(X,Y)
+    y_hat = my_lreg.predict_(X)
+    m = my_lreg.mse_(Y, y_hat)
     print(f"exemple 2\n{m}")
     # Output:
     # 586.896999...
