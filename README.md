@@ -58,6 +58,7 @@ theta = [
         [3.62457311e+301]]
 !!!
 tu m'étonnes que j'ai un overflow
+Le problème venait d'alpha qui était trop gros car les thetas s'eloignaient du theta idéal, avec un alpha plus petit ça marche !
 
 ## exercice 06
 liens utiles
