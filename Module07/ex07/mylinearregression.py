@@ -10,14 +10,12 @@ class MyLinearRegression():
     def __init__(self, theta, alpha=0.001, max_iter=1000):
         self.alpha = alpha
         self.max_iter = max_iter
-        # print(type(theta))
         if (isinstance(theta, list)):
             self.theta = np.array(theta)
             if (self.theta.shape != (len(self.theta), 1)):
                 self.theta = self.theta.reshape((len(self.theta), 1))
         else:
             self.theta = theta
-        # print(f"theta = {self.theta.shape}")
 
     def add_intercept(self, x):
         """Adds a column of 1's to the non-empty numpy.array x.
@@ -75,16 +73,12 @@ class MyLinearRegression():
             return None
         if x.shape[0] != y.shape[0] or x.shape[1] + 1 != self.theta.shape[0]:
             return None
-        x_prime = self.add_intercept(x)
+        x_prime = self.add_intercept(x)  # X with 1 col of one in front
         x_prime_T = np.transpose(x_prime)
-        prodmat = np.matmul(x_prime, self.theta)
-        x_prime_T = np.array(x_prime_T, dtype = np.float64)
-        prodmat = np.array(prodmat, dtype = np.float64)
-        np.seterr(over='raise')
-        try:
-            gradient = np.matmul(x_prime_T, prodmat - y) / x.shape[0]
-        except:
-            print(f"x_prime_T = {self.theta}")
+        y_hat = np.matmul(x_prime, self.theta)  # = X' * theta
+        x_prime_T = np.array(x_prime_T, dtype = np.float64)  # var' size ++
+        y_hat = np.array(y_hat, dtype = np.float64)  # var' size ++
+        gradient = np.matmul(x_prime_T, y_hat - y) / x.shape[0]
         return gradient
     
     def fit_(self, x, y):
@@ -125,11 +119,11 @@ class MyLinearRegression():
             return None
         if x.shape[0] != y.shape[0] or x.shape[1] + 1 != self.theta.shape[0]:
             return None
-        # print("bouh")
         
         for i in range(self.max_iter):
-            # print(f"i = {i}")
-            self.theta = self.theta - self.alpha * self.gradient(x, y)
+            gradient = self.gradient(x, y)
+            self.theta = self.theta - self.alpha * gradient
+
         return self.theta
 
     def predict_(self, x):
