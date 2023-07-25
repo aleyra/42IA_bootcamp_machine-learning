@@ -75,19 +75,18 @@ class MyLinearRegression():
             return None
         if x.shape[0] != y.shape[0] or x.shape[1] + 1 != self.theta.shape[0]:
             return None
-        x_prime = self.add_intercept(x)
+        x_prime = self.add_intercept(x)  # X with 1 col of one in front
         x_prime_T = np.transpose(x_prime)
-        prodmat = np.matmul(x_prime, self.theta)
-        x_prime_T = np.array(x_prime_T, dtype = np.float64)
-        prodmat = np.array(prodmat, dtype = np.float64)
-        # print(f"x_prime_T = {x_prime_T}")
+        y_hat = np.matmul(x_prime, self.theta)  # = X' * theta
+        x_prime_T = np.array(x_prime_T, dtype = np.float64)  # var' size ++
+        y_hat = np.array(y_hat, dtype = np.float64)  # var' size ++
         np.seterr(over='raise')
         try:
-            gradient = np.matmul(x_prime_T, prodmat - y) / x.shape[0]
+            gradient = np.matmul(x_prime_T, y_hat - y) / x.shape[0]
         except:
-            print(f"x_prime_T = {x_prime_T}")
-            print(f"self.theta = {self.theta}")
-            print(f"prodmat = {prodmat}")
+            # print(f"x_prime_T = {x_prime_T}")
+            print(f"self.theta = {self.theta[1]}")
+            print(f"prodmat = {y_hat[1]}")
         return gradient
     
     def fit_(self, x, y):
@@ -131,12 +130,13 @@ class MyLinearRegression():
         print("bouh")
         
         for i in range(self.max_iter):
-            print(f"i = {i}")
             gradient = self.gradient(x, y)
+            if i % 100 == 0:
+                print(f"i = {i} : gradient[1] = {gradient[1]} et theta[1] = {self.theta[1]}")
             self.theta = self.theta - self.alpha * gradient
-            if i == 19024 or i == 19022:  #
-                print(f"gradient = {gradient}")
-                print(f"theta = {self.theta}")
+            # if i == 19024 or i == 19022:  #
+            #     print(f"gradient[1] = {gradient[1]}")
+            #     print(f"theta[1] = {self.theta[1]}")
         return self.theta
 
     def predict_(self, x):
