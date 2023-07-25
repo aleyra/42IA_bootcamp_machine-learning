@@ -57,7 +57,6 @@ if __name__ == "__main__":
         writer_x_.writerow(x_[i])
     f_x_.close()
 
-    print(y_hat)
     f_y_hat = open('y_hat.csv', 'w')
     writer_y_hat = csv.writer(f_y_hat)
     for i in range(y_hat.shape[0]):
