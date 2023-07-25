@@ -51,11 +51,11 @@ if __name__ == "__main__":
     y_hat = my_lr.predict_(x_)
     # print(type(y_hat))
 
-    f_x_ = open('x_.csv', 'w')
-    writer_x_ = csv.writer(f_x_)
-    for i in range(x_.shape[0]):
-        writer_x_.writerow(x_[i])
-    f_x_.close()
+    f_continuous_x = open('x_.csv', 'w')
+    writer_continuous_x = csv.writer(f_continuous_x)
+    for i in range(continuous_x.shape[0]):
+        writer_continuous_x.writerow(continuous_x[i])
+    f_continuous_x.close()
 
     f_y_hat = open('y_hat.csv', 'w')
     writer_y_hat = csv.writer(f_y_hat)
