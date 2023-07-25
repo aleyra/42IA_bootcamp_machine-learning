@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
+import pandas as pd
 from polynomial_model import add_polynomial_features
 from mylinearregression import MyLinearRegression as MyLR
 
@@ -49,7 +50,6 @@ if __name__ == "__main__":
     continuous_x = np.arange(1,10.01, 0.01).reshape(-1,1)
     x_ = add_polynomial_features(continuous_x, 3)
     y_hat = my_lr.predict_(x_)
-    # print(type(y_hat))
 
     f_continuous_x = open('continuous_x.csv', 'w')
     writer_continuous_x = csv.writer(f_continuous_x)
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     # plt.plot(continuous_x, y_hat, color='orange')
     # plt.show()
     
-    """
+    
     # starting points ?
     theta4 = np.array([[-20],[ 160],[ -80],[ 10],[ -1]]).reshape(-1,1)
     theta5 = np.array(
@@ -76,5 +76,14 @@ if __name__ == "__main__":
         [[9110],[ -18015],[ 13400],[ -4935],[ 966],[ -96.4],[ 3.86]]
     ).reshape(-1,1)
 
-    # use "../data/are_blue_pills_magics.csv"
-    """
+    data = pd.read_csv("../data/are_blue_pills_magics.csv")
+    Xpill = np.array(data['Micrograms']).reshape(-1,1)
+    Yscore = np.array(data['Score']).reshape(-1,1)
+
+    x_4 = add_polynomial_features(Xpill, theta4.shape[0] - 1)
+    x_5 = add_polynomial_features(Xpill, theta5.shape[0] - 1)
+    x_6 = add_polynomial_features(Xpill, theta6.shape[0] - 1)
+
+    my_lr4 = MyLR(theta=theta4, alpha=1.0e-4)
+    my_lr5 = MyLR(theta=theta5, alpha=1.0e-4)
+    my_lr6 = MyLR(theta=theta6, alpha=1.0e-4)    
