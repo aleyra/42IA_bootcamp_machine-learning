@@ -67,5 +67,9 @@ liens utiles
 * vector to power : https://numpy.org/doc/stable/reference/generated/numpy.power.html
 
 ## exercice 07
-Il faut changer alpha pour avoir des résultats et observer le gradient pour avoir des résultats satisfaisants
+Il faut changer alpha et max_iter pour avoir des résultats et observer le gradient pour avoir des résultats satisfaisants
+
+
+
+
 pour ecrire dans un csv https://www.pythontutorial.net/python-basics/python-write-csv-file/
