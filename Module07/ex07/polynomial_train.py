@@ -64,7 +64,27 @@ if __name__ == "__main__":
     my_lr5 = MyLR(theta=theta5, alpha=7.2e-9, max_iter=100000)
     my_lr6 = MyLR(theta=theta6, alpha=1.0e-9, max_iter=22400)
 
-    # my_lr4.fit_(x_4, Yscore)
-    # my_lr5.fit_(x_5, Yscore)
+    my_lr4.fit_(x_4, Yscore)
+    my_lr5.fit_(x_5, Yscore)
     my_lr6.fit_(x_6, Yscore)
+
+    min = min(Xpill)
+    max = max(Xpill) + 0.01
+    continuous_x = np.arange(min, max, 0.01).reshape(-1,1)
+
+    x_4 = add_polynomial_features(continuous_x, theta4.shape[0] - 1)
+    x_5 = add_polynomial_features(continuous_x, theta5.shape[0] - 1)
+    x_6 = add_polynomial_features(continuous_x, theta6.shape[0] - 1)
+
+    y_hat4 = my_lr4.predict_(x_4)
+    y_hat5 = my_lr5.predict_(x_5)
+    y_hat6 = my_lr6.predict_(x_6)
+
+    plt.scatter(Xpill,Yscore)
+    plt.plot(continuous_x, y_hat4, color='orange')
+    plt.plot(continuous_x, y_hat5, color='red')
+    plt.plot(continuous_x, y_hat6, color='purple')
+    plt.show()
+
+
 
