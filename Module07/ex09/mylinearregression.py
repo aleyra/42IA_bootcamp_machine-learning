@@ -82,7 +82,7 @@ class MyLinearRegression():
         try:
             gradient = np.matmul(x_prime_T, y_hat - y) / x.shape[0]
         except:
-            print(f"self.theta[1] = {self.theta[1]}")
+            return "error"
         return gradient
     
     def fit_(self, x, y):
@@ -124,13 +124,16 @@ class MyLinearRegression():
         if x.shape[0] != y.shape[0] or x.shape[1] + 1 != self.theta.shape[0]:
             return None      
         
+        gradient = np.ndarray(y.shape)
         for i in range(self.max_iter):
             gradient = self.gradient(x, y)
+            if (isinstance(gradient, str)):
+                return "error"
             # if (i > self.max_iter -10):
             #     print(f"g = {gradient[1]}")
             self.theta = self.theta - self.alpha * gradient
 
-        return self.theta
+        return gradient[0][0]
 
     def predict_(self, x):
         """Computes the prediction vector y_hat from two non-empty numpy.array.
