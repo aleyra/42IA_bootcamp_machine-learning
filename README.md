@@ -75,8 +75,10 @@ Si le gradient > 0
 Si le gradient < 0
         Tant qu'il est < 0 on augmente le max_iter de 1000 `max_iter += 1000`
 Tant que le gradient n'est pas strictement compris entre -0.01 et 0.01 on diminue de max_iter de 100 `max_iter -= 100`
+NB : mettre un point d'arret à 10 tour dans cette dernière boucle
 Faudrait faire une fonction pour déterminer de bons candidats pour alpha et max_iter
 
 ## exercice 09
+création d'une petite fonction pour avoir un bon trinome (theta, alpha, max_iter) mais c'est pas demandé mais c'est pratique
 liens utiles :
 * pour ecrire dans un csv https://www.pythontutorial.net/python-basics/python-write-csv-file/
