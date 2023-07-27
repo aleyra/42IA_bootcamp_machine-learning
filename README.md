@@ -68,8 +68,15 @@ liens utiles
 
 ## exercice 07
 Il faut changer alpha et max_iter pour avoir des résultats et observer le gradient pour avoir des résultats satisfaisants
+Methode :
+Tant qu'il y a une erreur lors du calcul du gradient, on dimunue la taille d'alpha `alpha /= 10`
+Si le gradient > 0
+        Tant qu'il est > 0 on augmente le max_iter de 1000 `max_iter += 1000`
+Si le gradient < 0
+        Tant qu'il est < 0 on augmente le max_iter de 1000 `max_iter += 1000`
+Tant que le gradient n'est pas strictement compris entre -0.01 et 0.01 on diminue de max_iter de 100 `max_iter -= 100`
+Faudrait faire une fonction pour déterminer de bons candidats pour alpha et max_iter
 
-
-
-
-pour ecrire dans un csv https://www.pythontutorial.net/python-basics/python-write-csv-file/
+## exercice 09
+liens utiles :
+* pour ecrire dans un csv https://www.pythontutorial.net/python-basics/python-write-csv-file/
