@@ -17,5 +17,29 @@ if __name__ == "__main__":
     Y_training = split[2]
     X_test = split[1]
     Y_test = split[3]
-
     
+    # make Ys smaller
+    Y_training /= 100000
+    Y_test /= 100000
+
+    # Model 1 : degree = 1
+    theta_size = 1 + X_training.shape[1]
+    # mlr1 = sami(
+    #     theta = np.ones(theta_size).reshape(-1,1),
+    #     alpha = 1.0e-4, 
+    #     max_iter = 1000, 
+    #     x = X_training, 
+    #     y = Y_training
+    # )  # ok with alpha = 1.0e-7 and max_iter = 300000
+
+    mlr1 = MLR(
+        theta = np.ones(theta_size).reshape(-1,1),
+        alpha = 1.0e-7, 
+        max_iter = 400000, 
+    )
+    res = mlr1.fit_(
+        x = X_training, 
+        y = Y_training
+    )
+    print(f"alpha = {mlr1.alpha} max_iter = {mlr1.max_iter} res = {res}")
+    # print(f"theta = {mlr1.theta} alpha = {mlr1.alpha} max_iter = {mlr1.max_iter}")
