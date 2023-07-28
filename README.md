@@ -79,6 +79,13 @@ NB : mettre un point d'arret à 10 tour dans cette dernière boucle
 Faudrait faire une fonction pour déterminer de bons candidats pour alpha et max_iter
 
 ## exercice 09
-création d'une petite fonction pour avoir un bon trinome (theta, alpha, max_iter). C'est pas demandé mais c'est pratique
+modification de MyLinearRegression pour permettrecréation d'une petite fonction (sami) pour avoir un bon trinome (theta, alpha, max_iter).
+C'est pas demandé mais c'est pratique
+pistes pour améliorer sami :
+* continuer à diminuer la taille d'alpha tant que ça dimunue res en valeur abs
+* dans 1 premier temps augmenter max_iter par tranche de 10k puis diminuer? par tranche de 5k puis augmenter? par tranche de 1k etc...
+* laisser les print pour se rassurer sur les boucle inf
+
+pour éviter d'avoir des max_iter beaucoup trop grand (degree 1 -> alpha = 1e-07 max_iter = 301000 res = -23704.93476832665) il suffit de diminuer les valeurs sur lesquelles ont travaille (en tout cas quand il s'agit de vecteurs)
 liens utiles :
 * pour ecrire dans un csv https://www.pythontutorial.net/python-basics/python-write-csv-file/
