@@ -22,7 +22,7 @@ def search_max_iter_new_theta(theta, alpha, x, y):
     mlr = MLR(theta, alpha, 1000)
     res = mlr.fit_(x, y)
     max_iter = 0
-    adding = 100000
+    adding = 1000000
     sign = 1
     while (adding > 10) :
         i = 0

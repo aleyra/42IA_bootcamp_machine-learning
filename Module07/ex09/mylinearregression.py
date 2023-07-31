@@ -29,6 +29,7 @@ class MyLinearRegression():
             function should not raise any Exception.
         """
         if not isinstance(x, np.ndarray) or x.size == 0:
+            print("x not a np.ndarray or x.size = 0")
             return None
         if x.ndim == 1:
             res = []
@@ -68,10 +69,13 @@ class MyLinearRegression():
             or not isinstance(y, np.ndarray)
             or not isinstance(self.theta, np.ndarray)
         ):
+            print("x or y or theta not a np.ndarray")
             return None
         if x.size == 0 or y.size == 0 or self.theta.size == 0:
+            print("x or y or theta is empty")
             return None
         if x.shape[0] != y.shape[0] or x.shape[1] + 1 != self.theta.shape[0]:
+            print("x.shape[0] != y.shape[0] or x.shape[1] + 1 != theta.shape[0]")
             return None
         x_prime = self.add_intercept(x)  # X with 1 col of one in front
         x_prime_T = np.transpose(x_prime)
@@ -114,14 +118,19 @@ class MyLinearRegression():
             or not isinstance(self.alpha, float)
             or not isinstance(self.max_iter, int)
         ):
+            print("x or y or theta not a np.ndarray or alpha not a float or max_iter not an int")
             return None
         if x.ndim != 2 or y.ndim != 2 or self.theta.ndim != 2:
+            print("x.ndim != 2 or y.ndim != 2 or self.theta.ndim != 2")
             return None
         if self.alpha > 1 or self.alpha < 0 or self.max_iter < 1:
+            print("alpha too big or negative or max_iter <= 0")
             return None
         if x.size == 0 or y.size == 0 or self.theta.size == 0:
+            print("x or y or theta is empty")
             return None
         if x.shape[0] != y.shape[0] or x.shape[1] + 1 != self.theta.shape[0]:
+            print("x.shape[0] != y.shape[0] or x.shape[1] + 1 != theta.shape[0]")
             return None      
         
         gradient = np.ndarray(y.shape)
@@ -153,10 +162,13 @@ class MyLinearRegression():
             not isinstance(x, np.ndarray)
             or not isinstance(self.theta, np.ndarray)
         ):
+            print("x or theta not a n.ndarray")
             return None
         if x.size == 0 or self.theta.size == 0:
+            print("x or theta is empty")
             return None
         if self.theta.shape[1] != 1 or x.shape[1] + 1 != self.theta.shape[0]:
+            print("self.theta.shape[1] != 1 or x.shape[1] + 1 != theta.shape[0]")
             return None
         y_hat = np.ndarray((x.shape[0], 1))
         x = self.add_intercept(x)
@@ -179,10 +191,13 @@ class MyLinearRegression():
                 This function should not raise any Exception.
         """
         if not isinstance(y, np.ndarray) or not isinstance(y_hat, np.ndarray):
+            print("y or y_hat not a np.ndarray")
             return None
         if y.size == 0 or y_hat.size == 0:
+            print("y or y_hat is empty")
             return None
         if y.shape != y_hat.shape:
+            print("y.shape != y_hat.shape")
             return None
         diff = y_hat - y
         res = 0.0
@@ -206,10 +221,13 @@ class MyLinearRegression():
                 This function should not raise any Exceptions.
         """
         if not isinstance(y, np.ndarray) or not isinstance(y_hat, np.ndarray):
+            print("y or y_hat not a np.ndarray")
             return None
         if y.size == 0 or y_hat.size == 0:
+            print("y or y_hat is empty")
             return None
         if y.shape != y_hat.shape:
+            print('y.shape != y_hat.shape')
             return None
         res = 0.0
         for i in range(y.shape[0]):
