@@ -13,17 +13,22 @@ def search_alpha(theta, alpha, max_iter, x, y):
         #     bool_t = False
         alpha = alpha / 10
         mlr = MLR(theta, alpha, max_iter)
-        # mlr.alpha = mlr.alpha / 10  # l'idée était de remplacer L15-16 par ça
+        # mlr.alpha = mlr.alpha / 10  # l'idée était de remplacer L14-15 par ça
         res = mlr.fit_(x, y)
         print(f"alpha = {mlr.alpha} max_iter = {mlr.max_iter} res = {res}")
     return alpha
 
-def search_by_scan(theta, alpha, max_iter, x, y, res, sign):
+def search_max_iter_new_theta(theta, alpha, x, y):
+    mlr = MLR(theta, alpha, 1000)
+    res = mlr.fit_(x, y)
+    max_iter = 0
     adding = 100000
+    sign = 1
     while (adding > 10) :
         i = 0
         if res > 0:
-            while res > 0.01 or i < 10:
+            # print("res positif")  # debug
+            while res > 0.01 and i < 10:
                 # if bool_t == True:  # debug
                 #     print("ds 2e while")
                 #     bool_t = False
@@ -34,7 +39,8 @@ def search_by_scan(theta, alpha, max_iter, x, y, res, sign):
                 print(f"alpha = {mlr.alpha} max_iter = {mlr.max_iter} res = {res}")
                 i += 1
         elif res < 0:
-            while res < -0.01 or i < 10:
+            # print("res negatif")  # debug
+            while res < -0.01 and i < 10:
                 # if bool_t == True:  # debug
                 #     print("ds 2e while")
                 #     bool_t = False
@@ -43,50 +49,13 @@ def search_by_scan(theta, alpha, max_iter, x, y, res, sign):
                 res = mlr.fit_(x, y)
                 print(f"alpha = {mlr.alpha} max_iter = {mlr.max_iter} res = {res}")
                 i += 1
-        adding /= 10
+        adding = int(adding / 10)
         sign *= -1
-    return (max_iter, mlr.__hash__theta)
-
-def search_max_iter_new_theta(theta, alpha, max_iter, x, y):
-    mlr = MLR(theta, alpha, max_iter)
-    res = mlr.fit_(x, y)
-    # bool_t = True  # debug
-    # if res > 0:
-    #     while res > 0.01 :
-    #         # if bool_t == True:  # debug
-    #         #     print("ds 2e while")
-    #         #     bool_t = False
-    #         max_iter += 1000
-    #         mlr = MLR(theta, alpha, max_iter)
-    #         # mlr.max_iter = mlr.max_iter + 1000  # meme idée que pour alpha...
-    #         res = mlr.fit_(x, y)
-    #         print(f"alpha = {mlr.alpha} max_iter = {mlr.max_iter} res = {res}")
-    # elif res < 0:
-    #     while res < -0.01 :
-    #         # if bool_t == True:  # debug
-    #         #     print("ds 2e while")
-    #         #     bool_t = False
-    #         max_iter += 1000
-    #         mlr = MLR(theta, alpha, max_iter)
-    #         res = mlr.fit_(x, y)
-    #         print(f"alpha = {mlr.alpha} max_iter = {mlr.max_iter} res = {res}")
-    # # bool_t = True  # debug
-    # i = 0
-    # while (res > 0.01 or res < -0.01) and i != 10:
-    #     # if bool_t == True:  # debug
-    #     #     print("ds 3e while")
-    #     #     bool_t = False
-    #     max_iter -= 100
-    #     mlr = MLR(theta, alpha, max_iter)
-    #     res = mlr.fit_(x, y)
-    #     i += 1
-    #     print(f"alpha = {mlr.alpha} max_iter = {mlr.max_iter} res = {res} i = {i}")
-    return search_by_scan(theta, alpha, max_iter, x, y, 1, res)
+    return mlr
 
 def search_alpha_max_iter(theta, alpha, max_iter, x, y):
     alpha = search_alpha(theta, alpha, max_iter, x, y)
-    max_iter_theta = search_max_iter_new_theta(theta, alpha, max_iter, x, y)
-    mlr = MLR(max_iter_theta[1], alpha, max_iter[0])
+    mlr = search_max_iter_new_theta(theta, alpha, x, y)
     return mlr
 
 if __name__ == "__main__":
@@ -112,6 +81,7 @@ if __name__ == "__main__":
     if not isinstance(mlr, MLR):
         print("error")
         exit()
+    print(f"alpha = {mlr.alpha} max_iter = {mlr.max_iter}")
     
 
 
