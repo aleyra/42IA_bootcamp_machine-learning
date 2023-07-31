@@ -5,7 +5,7 @@ from polynomial_model import add_polynomial_features
 def search_alpha(theta, alpha, max_iter, x, y):
     mlr = MLR(theta, alpha, max_iter)
     res = mlr.fit_(x, y)
-    first_wall = max((max(y),min(y))) * 10
+    first_wall = max((max(y),min(y))) * 100
     # bool_t = True  # debug
     while (isinstance(res, str) or res >first_wall[0] or res < -first_wall[0]):
         # if bool_t == True:  # debug
@@ -34,7 +34,7 @@ def search_max_iter_new_theta(theta, alpha, x, y):
                 #     bool_t = False
                 max_iter += sign * adding
                 mlr = MLR(theta, alpha, max_iter)
-                # mlr.max_iter = mlr.max_iter + 1000  # meme idée que pour alpha...
+                # mlr.max_iter = mlr.max_iter + sign * adding  # meme idée que pour alpha...
                 res = mlr.fit_(x, y)
                 print(f"alpha = {mlr.alpha} max_iter = {mlr.max_iter} res = {res}")
                 i += 1
