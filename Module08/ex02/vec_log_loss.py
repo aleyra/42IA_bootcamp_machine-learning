@@ -27,6 +27,11 @@ def vec_log_loss_(y, y_hat, eps=1e-15):
     if y.shape != y_hat.shape:
         return None
     ones = np.ones(y.size).reshape(y.shape)
+    for i in range(y_hat.shape[0]):
+        if y_hat[i][0] == 0:
+            y_hat[i][0] = eps
+        if y[i][0] == 0:
+            y[i][0] = eps
     log1 = np.log(y_hat)
     log2 = np.log(ones - y_hat)
     m = y.shape[0]
