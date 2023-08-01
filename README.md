@@ -93,3 +93,9 @@ liens utiles :
 * take a col : https://www.geeksforgeeks.org/how-to-access-a-numpy-array-by-column/
 * concat matrix : https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html
 * pour ecrire dans un csv https://www.pythontutorial.net/python-basics/python-write-csv-file/
+
+# Module 08
+## exercice 00
+liens utiles :
+* exp(x) : https://docs.python.org/fr/3.5/library/math.html
+
