@@ -82,12 +82,14 @@ Faudrait faire une fonction pour déterminer de bons candidats pour alpha et max
 modification de MyLinearRegression pour permettrecréation d'une petite fonction (sami) pour avoir un bon trinome (theta, alpha, max_iter).
 C'est pas demandé mais c'est pratique
 pistes pour améliorer sami :
-* plutot que de balayer dans un sens puis l'autre, balayer toujours du plus petit au plus gros
 * laisser les print pour se rassurer sur les boucle inf
+* plutot que de refaire du debut, continuer depuis le dernier theta et max_iter = sum iter faites
+* pourquoi de ne pas mettre la condition d'arret à la taille des valeurs du gradient plutot qu'au nombre d'iteration ?
 
 nouvelle fonction add_polynomial_featured_to_matrix (apftm): l'idée est d'avoir comme add_polynomial_featured mais pour des matrices
 
 pour éviter d'avoir des max_iter beaucoup trop grand (degree 1 -> alpha = 1e-07 max_iter = 301000 res = -23704.93476832665) il suffit de diminuer les valeurs sur lesquelles ont travaille (en tout cas quand il s'agit de vecteurs)
 liens utiles :
 * take a col : https://www.geeksforgeeks.org/how-to-access-a-numpy-array-by-column/
+* concat matrix : https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html
 * pour ecrire dans un csv https://www.pythontutorial.net/python-basics/python-write-csv-file/
