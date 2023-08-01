@@ -141,7 +141,8 @@ class MyLinearRegression():
             # if (i > self.max_iter -10):
             #     print(f"g = {gradient[1]}")
             self.theta = self.theta - self.alpha * gradient
-
+            if (i % 10000 == 0):
+                print(f"i = {i} et theta = {self.theta}")
         return gradient[0][0]
 
     def predict_(self, x):

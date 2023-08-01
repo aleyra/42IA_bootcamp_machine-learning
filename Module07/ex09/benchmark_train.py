@@ -57,12 +57,29 @@ if __name__ == "__main__":
     # )  # ok with alpha = 1.0e-14? and max_iter = ? c'est trop long !!!!
     # print(f"theta = {mlr2.theta} alpha = {mlr2.alpha} max_iter = {mlr2.max_iter}")
     mlr2 = MLR(
-        theta = np.ones(theta_size).reshape(-1,1),
+        theta = np.array([[ 9.99847759e-01],
+            [ 9.86125766e-01],
+            [-3.51824794e-02],
+            [ 8.49049567e-01],
+            [-3.66493054e-04],
+            [ 9.98718641e-01],
+            [ 9.86759132e-01]]),
         alpha = 1.0e-14,
-        max_iter = 10000000
+        max_iter = 23000000 - 17870000 + 1
     )  # pour aller plus vite pendant les tests
     res = mlr2.fit_(X_training2, small_Y_training)
+    """
+    i = 60 000 000 et theta = [[ 9.99840078e-01]
+ [ 9.85895529e-01]
+ [-4.55447284e-02]
+ [ 8.41373042e-01]
+ [-3.56562455e-04]
+ [ 9.98648194e-01]
+ [ 9.85997491e-01]]
+ res = 147.02274606908802
+    """
     print(res)
+    print(mlr2.theta)
     # small_Y_hat2 = mlr2.predict_(X_test2)
     # loss2 = mlr2.loss_(small_Y_test, small_Y_hat2)
     # mse2 = mlr2.mse_(small_Y_test, small_Y_hat2)
