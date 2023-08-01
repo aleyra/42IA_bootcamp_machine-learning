@@ -2,11 +2,6 @@ import numpy as np
 from log_pred import logistic_predict_
 
 
-def log_to_mat(x):
-    """
-    apply log to all elem of
-    """
-
 def vec_log_loss_(y, y_hat, eps=1e-15):
     """
     Compute the logistic loss value.
