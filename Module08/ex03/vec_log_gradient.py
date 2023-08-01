@@ -1,4 +1,6 @@
 import numpy as np
+from log_pred import logistic_predict_
+from tools import add_intercept
 
 
 def vec_log_gradient(x, y, theta):
@@ -16,15 +18,29 @@ def vec_log_gradient(x, y, theta):
     Raises:
             This function should not raise any Exception.
     """
-    ... Your code ...
-
+    if (
+        not isinstance(x, np.ndarray)
+        or not isinstance(y, np.ndarray)
+        or not isinstance(theta, np.ndarray)
+    ):
+        return None
+    if x.size == 0 or y.size == 0 or theta.size == 0:
+        return None
+    if x.shape[0] != y.shape[0] or x.shape[1] + 1 != theta.shape[0]:
+        return None
+    x_prime_T = np.transpose(add_intercept(x))
+    m = x.shape[0]
+    y_hat = logistic_predict_(x, theta)
+    res = 1 / m * np.matmul(x_prime_T, y_hat - y)
+    return res
 
 if __name__ == "__main__":
     # Example 1:
     y1 = np.array([1]).reshape((-1, 1))
     x1 = np.array([4]).reshape((-1, 1))
     theta1 = np.array([[2], [0.5]])
-    vec_log_gradient(x1, y1, theta1)
+    gradient = vec_log_gradient(x1, y1, theta1)
+    print(gradient)
     # Output:
     # array([[-0.01798621],
     #     [-0.07194484]])
@@ -33,7 +49,8 @@ if __name__ == "__main__":
     y2 = np.array([[1], [0], [1], [0], [1]])
     x2 = np.array([[4], [7.16], [3.2], [9.37], [0.56]])
     theta2 = np.array([[2], [0.5]])
-    vec_log_gradient(x2, y2, theta2)
+    gradient = vec_log_gradient(x2, y2, theta2)
+    print(gradient)
     # Output:
     # array([[0.3715235 ],
     #     [3.25647547]])
@@ -42,7 +59,8 @@ if __name__ == "__main__":
     y3 = np.array([[0], [1], [1]])
     x3 = np.array([[0, 2, 3, 4], [2, 4, 5, 5], [1, 3, 2, 7]])
     theta3 = np.array([[-2.4], [-1.5], [0.3], [-1.4], [0.7]])
-    vec_log_gradient(x3, y3, theta3)
+    gradient = vec_log_gradient(x3, y3, theta3)
+    print(gradient)
     # Output:
     # array([[-0.55711039],
     #     [-0.90334809],
