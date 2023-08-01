@@ -47,7 +47,7 @@ class MyLogisticRegression():
         res = np.insert(x, 0, col1, axis=1)
         return res
     
-    def sigmoid_(x):
+    def sigmoid_(self, x):
         """
         Compute the sigmoid of a vector.
         Args:
@@ -67,7 +67,7 @@ class MyLogisticRegression():
             res[i][0] = 1 / (1 + exp(-x[i][0]))
         return res
     
-    def logistic_predict_(self, x):
+    def predict_(self, x):
         """Computes the vector of prediction y_hat from two non-empty numpy.ndarray
         Args:
                 x: has to be an numpy.ndarray, a vector of dimension m * n.
@@ -93,7 +93,7 @@ class MyLogisticRegression():
         y_hat = self.sigmoid_(np.matmul(x_prime, self.theta))
         return y_hat
     
-    def vec_log_gradient(self, x, y):
+    def gradient(self, x, y):
         """Computes a gradient vector from three non-empty numpy.ndarray, without
         any for-loop. The three arrays must have comp
         Args:
@@ -120,7 +120,7 @@ class MyLogisticRegression():
             return None
         x_prime_T = np.transpose(self.add_intercept(x))
         m = x.shape[0]
-        y_hat = self.logistic_predict_(x, self.theta)
+        y_hat = self.predict_(x)
         res = 1 / m * np.matmul(x_prime_T, y_hat - y)
         return res
     
@@ -176,8 +176,41 @@ class MyLogisticRegression():
             # if (i > self.max_iter -10):
             #     print(f"g = {gradient[1]}")
             self.theta = self.theta - self.alpha * gradient
-            if (i % 10000 == 0):
-                print(f"i = {i} et theta = {self.theta}")
+            # if (i % 10000 == 0):
+            #     print(f"i = {i} et theta = {self.theta}")
         return gradient[0][0]
     
-    
+    def loss_(self, y, y_hat):
+        """
+        Compute the logistic loss value.
+        Args:
+                y: has to be an numpy.ndarray, a vector of shape m * 1.
+                y_hat: has to be an numpy.ndarray, a vector of shape m * 1.
+        Returns:
+                The logistic loss value as a float.
+                None on any error.
+        Raises:
+                This function should not raise any Exception.
+        """
+        if not isinstance(y, np.ndarray) or not isinstance(y_hat, np.ndarray):
+            print("y or y_hat is not a np.ndarray")
+            return None
+        
+        if y.shape != y_hat.shape:
+            print("y and y_hat doesn't have the same shape")
+            return None
+        eps = 1e-15
+        ones = np.ones(y.size).reshape(y.shape)
+        diff = ones - y_hat
+        for i in range(y_hat.shape[0]):
+            if y_hat[i][0] == 0:
+                y_hat[i][0] = eps
+            if diff[i][0] == 0:
+                diff[i][0] = eps
+        log1 = np.log(y_hat)
+        log2 = np.log(diff)
+        m = y.shape[0]
+        dot1 = np.matmul(np.transpose(y), log1)
+        dot2 = np.matmul(np.transpose(ones - y), log2)
+        res = 1 / -m * (dot1 + dot2)
+        return res[0][0]

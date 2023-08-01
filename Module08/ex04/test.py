@@ -9,20 +9,21 @@ if __name__ == "__main__":
     mylr = MyLR(thetas)
 
     # Example 0:
-    mylr.predict_(X)
+    y_hat = mylr.predict_(X)
+    print(y_hat)
     # Output:
     # array([[0.99930437],
     #     [1.    ],
     #     [1.    ]])
 
     # Example 1:
-    mylr.loss_(X,Y)
+    print(mylr.loss_(Y, y_hat))
     # Output:
     # 11.513157421577004
 
     # Example 2:
     mylr.fit_(X, Y)
-    mylr.theta
+    print(mylr.theta)
     # Output:
     # array([[ 2.11826435]
     #     [ 0.10154334]
@@ -31,13 +32,14 @@ if __name__ == "__main__":
     #     [ 0.6212541 ]])
 
     # Example 3:
-    mylr.predict_(X)
+    y_hat = mylr.predict_(X)
+    print(y_hat)
     # Output:
     # array([[0.57606717]
     #     [0.68599807]
     #     [0.06562156]])
 
     # Example 4:
-    mylr.loss_(X,Y)
+    print(mylr.loss_(Y, y_hat))
     # Output:
     # 1.4779126923052268
