@@ -1,4 +1,5 @@
 import numpy as np
+from math import exp
 
 
 def sigmoid_(x):
@@ -12,23 +13,30 @@ def sigmoid_(x):
     Raises:
             This function should not raise any Exception.
     """
-    ... Your code ...
+    if not isinstance(x, np.ndarray):
+        return None
+    if x.ndim == 2 and x.shape[1] != 1:
+        return None
+    res = np.ones(x.size).reshape(x.shape)
+    for i in range(x.shape[0]):
+        res[i][0] = 1 / (1 + exp(-x[i][0]))
+    return res
 
 if __name__ == "__main__":
     # Example 1:
     x = np.array([[-4]])
-    sigmoid_(x)
+    print(sigmoid_(x))
     # Output:
     # array([[0.01798620996209156]])
     
     # Example 2:
     x = np.array([[2]])
-    sigmoid_(x)
+    print(sigmoid_(x))
     # Output:
     # array([[0.8807970779778823]])
     
     # Example 3:
     x = np.array([[-4], [2], [0]])
-    sigmoid_(x)
+    print(sigmoid_(x))
     # Output:
     # array([[0.01798620996209156], [0.8807970779778823], [0.5]])
