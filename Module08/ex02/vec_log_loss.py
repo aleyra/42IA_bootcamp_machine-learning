@@ -22,13 +22,14 @@ def vec_log_loss_(y, y_hat, eps=1e-15):
     if y.shape != y_hat.shape:
         return None
     ones = np.ones(y.size).reshape(y.shape)
+    diff = ones - y_hat
     for i in range(y_hat.shape[0]):
         if y_hat[i][0] == 0:
             y_hat[i][0] = eps
-        if y[i][0] == 0:
-            y[i][0] = eps
+        if diff[i][0] == 0:
+            diff[i][0] = eps
     log1 = np.log(y_hat)
-    log2 = np.log(ones - y_hat)
+    log2 = np.log(diff)
     m = y.shape[0]
     dot1 = np.matmul(np.transpose(y), log1)
     dot2 = np.matmul(np.transpose(ones - y), log2)
