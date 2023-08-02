@@ -46,6 +46,13 @@ if __name__ == "__main__":
     labeled_Y_test = to_label_by_zipcode(Y_test, zipcode)
 
     # Train a logistic model
-
+    theta = np.array([1, 1]).reshape(-1, 1)
+    mlr = MLR(
+        theta = theta, 
+        alpha = 0.001,
+        max_iter = 50000
+    )
+    res = mlr.fit_(X_training, labeled_Y_training)
+    print(f"max_iter = {mlr.max_iter} et res = {res}")
     # 
 
