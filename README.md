@@ -99,3 +99,6 @@ liens utiles :
 liens utiles :
 * exp(x) : https://docs.python.org/fr/3.5/library/math.html
 
+## exercice 05
+liens utiles :
+* extraire une sous-str : https://python.developpez.com/faq/?page=String
