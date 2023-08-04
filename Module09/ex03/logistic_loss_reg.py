@@ -16,6 +16,18 @@ def reg_log_loss_(y, y_hat, theta, lambda_):
     Raises:
             This function should not raise any Exception.
     """
+    if (
+        not isinstance(y, np.ndarray)
+        or not isinstance(y_hat, np.ndarray)
+        or not isinstance(theta, np.ndarray)
+        or not isinstance(lambda_, float)
+    ):
+        return None
+    if y.size == 0 or y_hat.size == 0 or theta.size == 0:
+        return None
+    if y.shape != y_hat.shape or y.shape[1] != 1 or theta.shape[1] != 1:
+        return None
+
 
 
 if __name__ == "__main__":
