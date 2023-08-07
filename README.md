@@ -102,3 +102,13 @@ liens utiles :
 ## exercice 05
 liens utiles :
 * extraire une sous-str : https://python.developpez.com/faq/?page=String
+
+# Module 09
+## exercice 05
+Attention, les args des fonctions dans le descriptif ne sont pas les bons, prendre ceux de l'exercice précédent
+Les output des exemples 2 et 3 diffères pourtant les formules sont bonnes...
+Output obtenus :
+exemples 2
+`[[-0.2891444 ] [-0.97416397] [-1.25245278] [-1.70331349] [-1.55401419]]`
+exemples 3
+`[[-0.2891444 ] [-0.72416397] [-1.30245278] [-1.46998016] [-1.67068086]]`
